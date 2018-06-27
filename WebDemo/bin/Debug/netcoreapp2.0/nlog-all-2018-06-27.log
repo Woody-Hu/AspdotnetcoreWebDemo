@@ -1,0 +1,121 @@
+2018-06-27 16:33:37.9800|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|INFO|User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2018-06-27 16:33:38.5760|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:33:38.5760|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:33:38.6280|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:33:38.6280|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:33:38.6430|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 79.1546ms 200  
+2018-06-27 16:33:38.6430|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 79.1546ms 200  
+2018-06-27 16:33:38.7770|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:33:38.7770|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:33:38.7870|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:33:38.7870|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:33:38.8280|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 104.1704ms 
+2018-06-27 16:33:38.8280|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 104.1704ms 
+2018-06-27 16:33:38.8280|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 270.0146ms 200 application/json; charset=utf-8 
+2018-06-27 16:33:38.8350|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 270.0146ms 200 application/json; charset=utf-8 
+2018-06-27 16:34:26.8440|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|INFO|User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2018-06-27 16:34:27.4900|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:34:27.4900|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:34:27.5400|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:34:27.5400|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:34:27.5540|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 77.2973ms 200  
+2018-06-27 16:34:27.5540|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 77.2973ms 200  
+2018-06-27 16:34:27.6730|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:34:27.6770|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:34:27.6770|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:34:27.6770|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:34:27.7210|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 87.8944ms 
+2018-06-27 16:34:27.7250|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 87.8944ms 
+2018-06-27 16:34:27.7250|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 250.0916ms 200 application/json; charset=utf-8 
+2018-06-27 16:34:27.7250|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 250.0916ms 200 application/json; charset=utf-8 
+2018-06-27 16:34:27.7400|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/favicon.ico   
+2018-06-27 16:34:27.7400|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/favicon.ico   
+2018-06-27 16:34:27.7400|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 9.7236ms 404  
+2018-06-27 16:34:27.7400|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 9.7236ms 404  
+2018-06-27 16:34:29.4560|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/   
+2018-06-27 16:34:29.4560|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/   
+2018-06-27 16:34:29.4960|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:34:29.4960|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:34:29.4960|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 42.4173ms 200 text/html 
+2018-06-27 16:34:29.5030|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 42.4173ms 200 text/html 
+2018-06-27 16:34:51.8410|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/index.html   
+2018-06-27 16:34:51.8440|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/index.html   
+2018-06-27 16:34:51.8440|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:34:51.8610|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:34:51.8610|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 21.3925ms 200 text/html 
+2018-06-27 16:34:51.8610|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 21.3925ms 200 text/html 
+2018-06-27 16:39:11.1770|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|INFO|User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2018-06-27 16:39:11.6360|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:39:11.6360|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:39:11.6890|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:39:11.6890|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:39:11.7020|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 79.5928ms 200  
+2018-06-27 16:39:11.7020|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 79.5928ms 200  
+2018-06-27 16:39:11.8270|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:39:11.8270|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:39:11.8360|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:39:11.8360|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:39:11.8730|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 86.7678ms 
+2018-06-27 16:39:11.8730|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 86.7678ms 
+2018-06-27 16:39:11.8730|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 255.7092ms 200 application/json; charset=utf-8 
+2018-06-27 16:39:11.8800|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 255.7092ms 200 application/json; charset=utf-8 
+2018-06-27 16:39:11.8800|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/favicon.ico   
+2018-06-27 16:39:11.8800|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/favicon.ico   
+2018-06-27 16:39:11.8800|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 8.4911ms 404  
+2018-06-27 16:39:11.9070|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 8.4911ms 404  
+2018-06-27 16:39:13.3580|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/   
+2018-06-27 16:39:13.3620|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/   
+2018-06-27 16:39:13.3990|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:39:13.4110|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:39:13.4110|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 53.4286ms 200 text/html 
+2018-06-27 16:39:13.4110|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 53.4286ms 200 text/html 
+2018-06-27 16:39:32.1400|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|INFO|User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2018-06-27 16:39:32.8560|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:39:32.8560|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:39:32.9070|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:39:32.9100|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:39:32.9100|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 78.9188ms 200  
+2018-06-27 16:39:32.9260|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 78.9188ms 200  
+2018-06-27 16:39:33.0450|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:39:33.0450|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:39:33.0540|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:39:33.0540|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:39:33.0920|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 88.8786ms 
+2018-06-27 16:39:33.0960|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 88.8786ms 
+2018-06-27 16:39:33.0960|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 254.5743ms 200 application/json; charset=utf-8 
+2018-06-27 16:39:33.0960|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 254.5743ms 200 application/json; charset=utf-8 
+2018-06-27 16:39:33.1120|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/favicon.ico   
+2018-06-27 16:39:33.1120|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/favicon.ico   
+2018-06-27 16:39:33.1120|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 7.2484ms 404  
+2018-06-27 16:39:33.1120|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 7.2484ms 404  
+2018-06-27 16:39:34.3770|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/   
+2018-06-27 16:39:34.3770|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/   
+2018-06-27 16:39:34.4260|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:39:34.4260|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:39:34.4260|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 57.168ms 200 text/html 
+2018-06-27 16:39:34.4380|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 57.168ms 200 text/html 
+2018-06-27 16:41:09.0970|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|INFO|User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2018-06-27 16:41:09.6520|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:41:09.6520|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:41:09.7020|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 DEBUG http://localhost:2548/  0 
+2018-06-27 16:41:09.7020|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/api/values   
+2018-06-27 16:41:09.7180|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 78.0357ms 200  
+2018-06-27 16:41:09.7180|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 78.0357ms 200  
+2018-06-27 16:41:09.8450|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:41:09.8480|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executing action method WebDemo.Controllers.ValuesController.Get (WebDemo) with arguments ((null)) - ModelState is Valid 
+2018-06-27 16:41:09.8480|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:41:09.8480|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|INFO|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2018-06-27 16:41:09.8960|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 89.9352ms 
+2018-06-27 16:41:09.8960|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|INFO|Executed action WebDemo.Controllers.ValuesController.Get (WebDemo) in 89.9352ms 
+2018-06-27 16:41:09.8960|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 264.1859ms 200 application/json; charset=utf-8 
+2018-06-27 16:41:09.8960|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 264.1859ms 200 application/json; charset=utf-8 
+2018-06-27 16:41:09.9170|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/favicon.ico   
+2018-06-27 16:41:09.9170|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/favicon.ico   
+2018-06-27 16:41:09.9170|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 8.2111ms 404  
+2018-06-27 16:41:09.9430|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 8.2111ms 404  
+2018-06-27 16:41:12.7080|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/   
+2018-06-27 16:41:12.7080|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request starting HTTP/1.1 GET http://localhost:2548/   
+2018-06-27 16:41:12.7530|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:41:12.7530|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|INFO|Sending file. Request path: '/index.html'. Physical path: 'D:\项目\万达构建库\WebDemo\WebDemo\WebDemo\wwwroot\index.html' 
+2018-06-27 16:41:12.7530|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 50.0806ms 200 text/html 
+2018-06-27 16:41:12.7530|Microsoft.AspNetCore.Hosting.Internal.WebHost|INFO|Request finished in 50.0806ms 200 text/html 
