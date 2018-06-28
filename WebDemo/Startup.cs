@@ -19,6 +19,9 @@ using WebDemo.DAO;
 using WebDemo.Entity;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using WebDemo.Authorization;
 
 namespace WebDemo
 {
@@ -34,6 +37,7 @@ namespace WebDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             //将当前的Mvc系统控制器注册为服务
             services.AddMvc().AddControllersAsServices() ;
         }
@@ -56,10 +60,13 @@ namespace WebDemo
 
             //注册扩展服务
             List<IAutofacContainerPrepare> tempList = new List<IAutofacContainerPrepare>();
+
             //HttpContext获取器
             tempList.Add(new AutofacHttpContextAccessorPrepare());
+
             //数据库上下文
             tempList.AddRange(AutoGenericAutoEFAutofacContainerPrepare.GetPrepares());
+
             builder.RegisterModule(new AutofacModule(tempList));
         }
 
@@ -69,6 +76,9 @@ namespace WebDemo
     
             //指定配置文件
             env.ConfigureNLog("nlog.config");
+
+            //添加Nlog
+            loggerFactory.AddNLog();
 
 
             //若是开发模式 打开详细异常中间件
@@ -80,10 +90,6 @@ namespace WebDemo
             //静态文件处理中间件
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
-            //添加Nlog
-            loggerFactory.AddNLog();
-
 
             //使用mvc管道中间件
             app.UseMvc();
