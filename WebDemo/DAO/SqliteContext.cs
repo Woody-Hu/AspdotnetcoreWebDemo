@@ -1,4 +1,5 @@
 ﻿using AutoEFContext;
+using AutofacEFImp;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebDemo.DAO
 {
+    [AutoContext]
     /// <summary>
     /// 使用的Sqlite数据库上下文
     /// </summary>

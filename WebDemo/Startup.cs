@@ -59,7 +59,7 @@ namespace WebDemo
             //HttpContext获取器
             tempList.Add(new AutofacHttpContextAccessorPrepare());
             //数据库上下文
-            tempList.Add(new GenericAutoEFAutofacContainerPrepare<SqliteContext>());
+            tempList.AddRange(AutoGenericAutoEFAutofacContainerPrepare.GetPrepares());
             builder.RegisterModule(new AutofacModule(tempList));
         }
 
