@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDemo", "WebDemo\WebDemo.csproj", "{9711C6C0-12DC-4FBB-AF6A-C7C3077BA9D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebDemo", "WebDemo\WebDemo.csproj", "{9711C6C0-12DC-4FBB-AF6A-C7C3077BA9D8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoEFContext", "FrameWork\AutoEFContext\AutoEFContext.csproj", "{12D5C323-E9F4-440F-8AB3-E3B5BF866DF7}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutofacUtility", "FrameWork\AutofacUtility\AutofacUtility.csproj", "{81B5846F-3FDA-430F-9587-17EE05782DCF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrameWork", "FrameWork", "{27F5B465-A3F1-444E-B62F-809FAFE7CC0A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDBUtility", "FrameWork\MongoDBUtility\MongoDBUtility.csproj", "{A007AF5D-6280-4ED5-BFFA-754EC60D1D34}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDBAutofacMiddlewareImp", "FrameWork\MongoDBAutofacMiddlewareImp\MongoDBAutofacMiddlewareImp.csproj", "{2EB516DE-6454-4435-BE75-F83EEAFE75B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,14 @@ Global
 		{81B5846F-3FDA-430F-9587-17EE05782DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81B5846F-3FDA-430F-9587-17EE05782DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81B5846F-3FDA-430F-9587-17EE05782DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A007AF5D-6280-4ED5-BFFA-754EC60D1D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A007AF5D-6280-4ED5-BFFA-754EC60D1D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A007AF5D-6280-4ED5-BFFA-754EC60D1D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A007AF5D-6280-4ED5-BFFA-754EC60D1D34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB516DE-6454-4435-BE75-F83EEAFE75B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB516DE-6454-4435-BE75-F83EEAFE75B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB516DE-6454-4435-BE75-F83EEAFE75B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB516DE-6454-4435-BE75-F83EEAFE75B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +83,8 @@ Global
 		{03BC7507-A530-445F-9639-13F859B04116} = {27F5B465-A3F1-444E-B62F-809FAFE7CC0A}
 		{08A9A162-6C90-465A-9082-FD51D23BA12D} = {27F5B465-A3F1-444E-B62F-809FAFE7CC0A}
 		{81B5846F-3FDA-430F-9587-17EE05782DCF} = {27F5B465-A3F1-444E-B62F-809FAFE7CC0A}
+		{A007AF5D-6280-4ED5-BFFA-754EC60D1D34} = {27F5B465-A3F1-444E-B62F-809FAFE7CC0A}
+		{2EB516DE-6454-4435-BE75-F83EEAFE75B0} = {27F5B465-A3F1-444E-B62F-809FAFE7CC0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27E57094-0C95-43CD-8E2B-CB98AAFE9E80}

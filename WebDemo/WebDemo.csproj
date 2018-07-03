@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.8.1" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.0" />
@@ -26,6 +24,8 @@
     <ProjectReference Include="..\FrameWork\AutofacMiddlewarePrepare\AutofacMiddlewarePrepareImp.csproj" />
     <ProjectReference Include="..\FrameWork\AutofacMiddleware\AutofacMiddleware.csproj" />
     <ProjectReference Include="..\FrameWork\AutofacUtility\AutofacUtility.csproj" />
+    <ProjectReference Include="..\FrameWork\MongoDBAutofacMiddlewareImp\MongoDBAutofacMiddlewareImp.csproj" />
+    <ProjectReference Include="..\FrameWork\MongoDBUtility\MongoDBUtility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
