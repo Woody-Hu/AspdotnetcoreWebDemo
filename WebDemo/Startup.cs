@@ -22,6 +22,7 @@ using NLog.Web;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using WebDemo.Authorization;
+using MongoDBAutofacMiddlewareImp;
 
 namespace WebDemo
 {
@@ -66,6 +67,9 @@ namespace WebDemo
 
             //数据库上下文
             tempList.AddRange(AutoGenericAutoEFAutofacContainerPrepare.GetPrepares());
+
+            //MongoDB数据库上下文
+            tempList.AddRange(AutoMogoDBPreparer.GetPrepares());
 
             builder.RegisterModule(new AutofacModule(tempList));
         }

@@ -22,7 +22,7 @@ namespace MongoDBUtility
         /// <returns></returns>
         public static string GetUseName(Type inputType)
         {
-            MongoDBEntityAttribute tempAttribute = inputType.GetCustomAttribute(inputType, false) as MongoDBEntityAttribute;
+            MongoDBEntityAttribute tempAttribute = inputType.GetCustomAttribute(typeof(MongoDBEntityAttribute), false) as MongoDBEntityAttribute;
 
             if (null == tempAttribute || string.IsNullOrWhiteSpace(tempAttribute.UseName))
             {

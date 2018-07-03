@@ -13,7 +13,7 @@ namespace MongoDBAutofacMiddlewareImp
     /// 默认持久化操作类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class DefaultRepository<C, T> : IRepository<C, T, string>
+    public class DefaultRepository<C, T> : IRespositoryStringKey<C,T>
        where T : DefaultEntity
        where C : BaseMongoDBContext
     {
@@ -61,7 +61,7 @@ namespace MongoDBAutofacMiddlewareImp
             DeleteMethod(input).Wait();
         }
 
-        public T Get(string id)
+        public T GetById(string id)
         {
             return GetMethod(k => k.Id == id).Result.First();
         }

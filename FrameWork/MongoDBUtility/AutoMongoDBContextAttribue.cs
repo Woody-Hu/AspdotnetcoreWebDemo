@@ -30,7 +30,7 @@ namespace MongoDBUtility
         {
             var tempType = inputType;
 
-            AutoMongoDBContextAttribue tempAttribute = tempType.GetCustomAttribute(tempType, false) as AutoMongoDBContextAttribue;
+            AutoMongoDBContextAttribue tempAttribute = tempType.GetCustomAttribute(typeof(AutoMongoDBContextAttribue), false) as AutoMongoDBContextAttribue;
 
             //判定特性
             if (null == tempAttribute || string.IsNullOrWhiteSpace(tempAttribute.UseDataSetName))
@@ -51,7 +51,7 @@ namespace MongoDBUtility
         public static bool GetIfAsThisType(Type inputType)
         {
             var tempType = inputType;
-            AutoMongoDBContextAttribue tempAttribute = tempType.GetCustomAttribute(tempType, false) as AutoMongoDBContextAttribue;
+            AutoMongoDBContextAttribue tempAttribute = tempType.GetCustomAttribute(typeof(AutoMongoDBContextAttribue), false) as AutoMongoDBContextAttribue;
             if (null == tempAttribute)
             {
                 return false;

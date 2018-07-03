@@ -14,7 +14,7 @@ namespace MongoDBUtility
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        T Get(TKey id);
+        T GetById(TKey id);
 
         /// <summary>
         /// 获取对象列表
