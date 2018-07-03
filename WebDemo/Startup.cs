@@ -23,6 +23,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using WebDemo.Authorization;
 using MongoDBAutofacMiddlewareImp;
+using WebDemo.Utility;
+using System.IO;
 
 namespace WebDemo
 {
@@ -31,6 +33,9 @@ namespace WebDemo
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            //初始化ConfigPacker
+            ConfigPacker.GetConfigPacker();
         }
 
         public IConfiguration Configuration { get; }
@@ -38,7 +43,6 @@ namespace WebDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             //将当前的Mvc系统控制器注册为服务
             services.AddMvc().AddControllersAsServices() ;
         }
