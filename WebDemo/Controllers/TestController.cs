@@ -14,6 +14,9 @@ using WebDemo.Utility;
 
 namespace WebDemo.Controllers
 {
+    /// <summary>
+    /// 测试控制器
+    /// </summary>
     [LogActionFilter]
     [Produces("application/json")]
     [Route("api/Test")]
@@ -26,6 +29,11 @@ namespace WebDemo.Controllers
             m_useService = inputTestService;
         }
 
+
+        /// <summary>
+        /// 测试添加方法
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("add")]
         public bool Add()
         {

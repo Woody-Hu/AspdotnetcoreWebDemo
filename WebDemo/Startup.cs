@@ -14,9 +14,12 @@ using NLog.Extensions.Logging;
 using NLog.Web;
 using MongoDBAutofacMiddlewareImp;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.IO;
 
 namespace WebDemo
 {
+
     public class Startup
     {
         public Startup(IConfiguration configuration, IHostingEnvironment env)
@@ -32,26 +35,44 @@ namespace WebDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //若是开发模式 注册swagger
-            if (Environment.IsDevelopment())
-            {
-                //注册Swagger服务
-                services.AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc("v1", new Info
-                    {
-                        Version = "v1",
-                        Title = "Web API",
-                        Description = "Web API Doc",
-                        TermsOfService = "None",
-                    });
-                });
-            }
-
-
+            PrepareSwaggerService(services);
 
             //将当前的Mvc系统控制器注册为服务
             services.AddMvc().AddControllersAsServices();
+        }
+
+        /// <summary>
+        /// 配置Swagger服务
+        /// </summary>
+        /// <param name="services"></param>
+        private void PrepareSwaggerService(IServiceCollection services)
+        {
+            //若是开发模式 注册swagger
+            if (Environment.IsDevelopment())
+            {
+                //使用的注释文档路径
+                string useXmlPath = String.Format(@"{0}\{1}.xml",
+                            System.AppDomain.CurrentDomain.BaseDirectory, Assembly.GetExecutingAssembly().GetName().Name);
+                //注册Swagger服务
+                services.AddSwaggerGen(c =>
+                {
+                    {
+                        c.SwaggerDoc("v1", new Info
+                        {
+                            Version = "v1",
+                            Title = "Web API",
+                            Description = "Web API Doc",
+                            TermsOfService = "None",
+                        });
+
+                        if (File.Exists(useXmlPath))
+                        {
+                            //设置Control注释文档
+                            c.IncludeXmlComments(useXmlPath, true);
+                        }
+                    }
+                });
+            }
         }
 
         // ConfigureContainer is where you can register things directly
