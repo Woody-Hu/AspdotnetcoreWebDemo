@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebDemo.Config;
 using WebDemo.Utility;
 
 namespace WebDemo.DAO
@@ -19,7 +20,9 @@ namespace WebDemo.DAO
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlite("Data Source = Test.db");
+            SqliteConfig tempConfig = ConfigPacker.GetConfigPacker().GetConfig<SqliteConfig>();
+
+            optionsBuilder.UseSqlite(tempConfig.ConnectStr);
         }
     }
 }

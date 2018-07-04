@@ -12,9 +12,9 @@ namespace WebDemo.Service
     [ComponentAttribute(IfByClass = false, LifeScope = LifeScopeKind.Request)]
     public class TestMongoDBService : ITestMongoDBService
     {
-        private readonly IRespositoryStringKey<TestMongoDBContext, TestMongoDBEntity> m_useRepository;
+        private readonly IRespositoryStringKey<MongoDBContext, TestMongoDBEntity> m_useRepository;
 
-        public TestMongoDBService(IRespositoryStringKey<TestMongoDBContext, TestMongoDBEntity> inputValue)
+        public TestMongoDBService(IRespositoryStringKey<MongoDBContext, TestMongoDBEntity> inputValue)
         {
             m_useRepository = inputValue;
         }

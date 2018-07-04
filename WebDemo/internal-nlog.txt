@@ -4,3 +4,9 @@
 2018-07-04 09:50:41.2768 Error GetLogger / GetCurrentClassLogger. Cannot create instance of type 'WebDemo.Service.TestService'. It should have an default contructor.  Exception: NLog.NLogConfigurationException: Cannot access the constructor of type: WebDemo.Service.TestService. Is the required permission granted?
    at NLog.Internal.FactoryHelper.CreateInstance(Type t)
    at NLog.LogFactory.GetLogger(LoggerCacheKey cacheKey)
+2018-07-04 13:26:53.0916 Error GetLogger / GetCurrentClassLogger. Cannot create instance of type 'WebDemo.Service.TestService'. It should have an default contructor.  Exception: NLog.NLogConfigurationException: Cannot access the constructor of type: WebDemo.Service.TestService. Is the required permission granted?
+   at NLog.Internal.FactoryHelper.CreateInstance(Type t)
+   at NLog.LogFactory.GetLogger(LoggerCacheKey cacheKey)
+2018-07-04 13:27:24.1383 Error GetLogger / GetCurrentClassLogger. Cannot create instance of type 'WebDemo.Service.TestService'. It should have an default contructor.  Exception: NLog.NLogConfigurationException: Cannot access the constructor of type: WebDemo.Service.TestService. Is the required permission granted?
+   at NLog.Internal.FactoryHelper.CreateInstance(Type t)
+   at NLog.LogFactory.GetLogger(LoggerCacheKey cacheKey)
