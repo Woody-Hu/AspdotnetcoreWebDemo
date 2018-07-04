@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Threading.Tasks;
-using AutoEFContextRepository;
 using Autofac;
 using AutofacEFImp;
 using AutofacMiddleware;
@@ -14,34 +10,48 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using WebDemo.DAO;
-using WebDemo.Entity;
 using NLog.Extensions.Logging;
 using NLog.Web;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using WebDemo.Authorization;
 using MongoDBAutofacMiddlewareImp;
-using WebDemo.Utility;
-using System.IO;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace WebDemo
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Environment = env;
         }
 
         public IConfiguration Configuration { get; }
 
+        public IHostingEnvironment Environment { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //若是开发模式 注册swagger
+            if (Environment.IsDevelopment())
+            {
+                //注册Swagger服务
+                services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new Info
+                    {
+                        Version = "v1",
+                        Title = "Web API",
+                        Description = "Web API Doc",
+                        TermsOfService = "None",
+                    });
+                });
+            }
+
+
+
             //将当前的Mvc系统控制器注册为服务
-            services.AddMvc().AddControllersAsServices() ;
+            services.AddMvc().AddControllersAsServices();
         }
 
         // ConfigureContainer is where you can register things directly
@@ -92,9 +102,21 @@ namespace WebDemo
                 app.UseDeveloperExceptionPage();
             }
 
+
             //静态文件处理中间件
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            if (env.IsDevelopment())
+            {
+                //Swagger
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Doc");
+                });
+            }
+            
 
             //使用mvc管道中间件
             app.UseMvc();
