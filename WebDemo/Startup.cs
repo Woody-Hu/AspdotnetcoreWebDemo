@@ -33,9 +33,6 @@ namespace WebDemo
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            //初始化ConfigPacker
-            ConfigPacker.GetConfigPacker();
         }
 
         public IConfiguration Configuration { get; }

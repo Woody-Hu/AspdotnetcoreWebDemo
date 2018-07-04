@@ -124,25 +124,7 @@ namespace WebDemo.Utility
         {
             var tempValue = UseConfig.GetSection(inputSectionName);
 
-            T returnValue = Activator.CreateInstance(typeof(T)) as T;
-
-            //使用的Key值字典
-            HashSet<string> useKeySet = (from n in tempValue.GetChildren() select n.Key).ToHashSet();
-
-            //循环属性
-            foreach (var oneProperty in typeof(T).GetProperties())
-            {
-                //只使用可读 可写 字符串类型 包含Key值的列表
-                if (!oneProperty.CanRead || !oneProperty.CanWrite
-                    || oneProperty.PropertyType != typeof(string) || !useKeySet.Contains(oneProperty.Name))
-                {
-                    continue;
-                }
-
-                //设置属性
-                oneProperty.SetValue(returnValue, tempValue[oneProperty.Name]);
-
-            }
+            T returnValue = tempValue.Get<T>();
 
             return returnValue;
         }
