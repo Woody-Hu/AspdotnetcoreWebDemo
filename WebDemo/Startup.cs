@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// 万达Web - 启动配置
+// 创建标识：胡迪 2018.07.03
+//----------------------------------------------------------------*/
+using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
 using AutofacEFImp;
@@ -14,12 +20,11 @@ using NLog.Extensions.Logging;
 using NLog.Web;
 using MongoDBAutofacMiddlewareImp;
 using Swashbuckle.AspNetCore.Swagger;
-using System;
 using System.IO;
+using System;
 
-namespace WebDemo
+namespace WanDaWeb
 {
-
     public class Startup
     {
         public Startup(IConfiguration configuration, IHostingEnvironment env)
@@ -35,44 +40,11 @@ namespace WebDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //若是开发模式 注册swagger
             PrepareSwaggerService(services);
 
             //将当前的Mvc系统控制器注册为服务
-            services.AddMvc().AddControllersAsServices();
-        }
-
-        /// <summary>
-        /// 配置Swagger服务
-        /// </summary>
-        /// <param name="services"></param>
-        private void PrepareSwaggerService(IServiceCollection services)
-        {
-            //若是开发模式 注册swagger
-            if (Environment.IsDevelopment())
-            {
-                //使用的注释文档路径
-                string useXmlPath = String.Format(@"{0}\{1}.xml",
-                            System.AppDomain.CurrentDomain.BaseDirectory, Assembly.GetExecutingAssembly().GetName().Name);
-                //注册Swagger服务
-                services.AddSwaggerGen(c =>
-                {
-                    {
-                        c.SwaggerDoc("v1", new Info
-                        {
-                            Version = "v1",
-                            Title = "Web API",
-                            Description = "Web API Doc",
-                            TermsOfService = "None",
-                        });
-
-                        if (File.Exists(useXmlPath))
-                        {
-                            //设置Control注释文档
-                            c.IncludeXmlComments(useXmlPath, true);
-                        }
-                    }
-                });
-            }
+            services.AddMvc().AddControllersAsServices() ;
         }
 
         // ConfigureContainer is where you can register things directly
@@ -123,11 +95,11 @@ namespace WebDemo
                 app.UseDeveloperExceptionPage();
             }
 
-
             //静态文件处理中间件
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            //若是开发模式 打开Swagger中间件
             if (env.IsDevelopment())
             {
                 //Swagger
@@ -137,10 +109,43 @@ namespace WebDemo
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Doc");
                 });
             }
-            
 
             //使用mvc管道中间件
             app.UseMvc();
+        }
+
+        /// <summary>
+        /// 配置Swagger服务
+        /// </summary>
+        /// <param name="services"></param>
+        private void PrepareSwaggerService(IServiceCollection services)
+        {
+            //若是开发模式 注册swagger
+            if (Environment.IsDevelopment())
+            {
+                //使用的注释文档路径
+                string useXmlPath = String.Format(@"{0}\{1}.xml",
+                            System.AppDomain.CurrentDomain.BaseDirectory, Assembly.GetExecutingAssembly().GetName().Name);
+                //注册Swagger服务
+                services.AddSwaggerGen(c =>
+                {
+                    {
+                        c.SwaggerDoc("v1", new Info
+                        {
+                            Version = "v1",
+                            Title = "Web API",
+                            Description = "Web API Doc",
+                            TermsOfService = "None",
+                        });
+
+                        if (File.Exists(useXmlPath))
+                        {
+                            //设置Control注释文档
+                            c.IncludeXmlComments(useXmlPath, true);
+                        }
+                    }
+                });
+            }
         }
     }
 }

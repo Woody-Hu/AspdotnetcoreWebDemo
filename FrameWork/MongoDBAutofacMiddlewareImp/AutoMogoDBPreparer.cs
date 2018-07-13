@@ -1,4 +1,10 @@
-﻿using AutofacMiddleware;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// MongoDB操作框架Autofac对接框架 - Autofac扫描框架的对接机制
+// 创建标识：胡迪 2018.07.04
+//----------------------------------------------------------------*/
+using AutofacMiddleware;
 using MongoDBUtility;
 using System;
 using System.Collections.Generic;

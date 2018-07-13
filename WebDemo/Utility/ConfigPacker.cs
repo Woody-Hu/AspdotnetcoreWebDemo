@@ -1,4 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// 万达Web - 公共 - 设置封装单例模式
+// 创建标识：胡迪 2018.07.03
+//----------------------------------------------------------------*/
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +12,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WebDemo.Utility
+namespace WanDaWeb.Utility
 {
     /// <summary>
     /// 设置封装单例模式
@@ -42,7 +48,7 @@ namespace WebDemo.Utility
 
             this.UseConfig = configRoot;
 
-        } 
+        }
         #endregion
 
         /// <summary>
@@ -78,7 +84,7 @@ namespace WebDemo.Utility
         }
 
         public T GetConfig<T>(string inputSectionName = null)
-            where T:class,new()
+            where T : class, new()
         {
             //调整SectionName
             if (string.IsNullOrWhiteSpace(inputSectionName))
@@ -99,7 +105,7 @@ namespace WebDemo.Utility
                 m_innerDic.Add(inputSectionName, returnValue);
             }
 
-       
+
 
             return returnValue;
         }
@@ -215,7 +221,7 @@ namespace WebDemo.Utility
                     m_useLocker.ExitReadLock();
                 }
             }
-        } 
+        }
         #endregion
 
 

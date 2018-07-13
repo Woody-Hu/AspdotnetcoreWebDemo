@@ -237,11 +237,11 @@ namespace AutoEFContextRepository
         {
             if (null == useWhere)
             {
-                return await Include(inputSource, useInclude).FirstAsync();
+                return await Include(inputSource, useInclude).FirstOrDefaultAsync();
             }
             else
             {
-                return await Include(inputSource, useInclude).FirstAsync(useWhere);
+                return await Include(inputSource, useInclude).FirstOrDefaultAsync(useWhere);
             }
         }
 

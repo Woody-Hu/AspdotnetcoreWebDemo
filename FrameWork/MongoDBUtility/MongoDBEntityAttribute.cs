@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// MongoDB操作框架 - 使用的MongoDBEntity特性
+// 创建标识：胡迪 2018.07.04
+//----------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;

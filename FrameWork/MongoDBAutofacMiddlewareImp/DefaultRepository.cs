@@ -1,4 +1,10 @@
-﻿using AutofacMiddleware;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// MongoDB操作框架Autofac对接框架 - 默认持久化操作类
+// 创建标识：胡迪 2018.07.04
+//----------------------------------------------------------------*/
+using AutofacMiddleware;
 using MongoDB.Driver;
 using MongoDBUtility;
 using System;

@@ -1,14 +1,20 @@
-﻿using AutoEFContext;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// 万达构件库Web应用- DAO层 - Sqlite数据库上下文
+// 创建标识：胡迪 2018.07.03
+//----------------------------------------------------------------*/
+using AutoEFContext;
 using AutofacEFImp;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebDemo.Config;
-using WebDemo.Utility;
+using WanDaWeb.Config;
+using WanDaWeb.Utility;
 
-namespace WebDemo.DAO
+namespace WanDaWeb.DAO
 {
     [AutoContext]
     /// <summary>
@@ -20,9 +26,10 @@ namespace WebDemo.DAO
         {
             base.OnConfiguring(optionsBuilder);
 
-            SqliteConfig tempConfig = ConfigPacker.GetConfigPacker().GetConfig<SqliteConfig>();
+            //获取配置
+            SqliteConfig useConfig = ConfigPacker.GetConfigPacker().GetConfig<SqliteConfig>();
 
-            optionsBuilder.UseSqlite(tempConfig.ConnectStr);
+            optionsBuilder.UseSqlite(useConfig.Connectstr);
         }
     }
 }

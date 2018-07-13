@@ -1,4 +1,10 @@
-﻿using AutofacMiddleware;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// Autofac扫描注入框架 - AOP机制 - 默认调度上下文
+// 创建标识：胡迪 2018.07.03
+//----------------------------------------------------------------*/
+using AutofacMiddleware;
 using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
@@ -49,7 +55,7 @@ namespace AutofacUtility
         /// </summary>
         /// <param name="inputCoreInvocation"></param>
         /// <param name="inputLstInterceptor"></param>
-        internal DefaultInvocationContext( IInvocation inputCoreInvocation,List<IInvocationInterceptor> inputLstInterceptor)
+        internal DefaultInvocationContext(IInvocation inputCoreInvocation,List<IInvocationInterceptor> inputLstInterceptor)
         {
             m_coreInvocation = inputCoreInvocation;
             m_lstInterceptor = inputLstInterceptor;
@@ -59,7 +65,7 @@ namespace AutofacUtility
 
         /// <summary>
         /// 执行管道
-        /// </summary>
+        /// </summary>  
         public void Proceed()
         {
             //执行管道方法

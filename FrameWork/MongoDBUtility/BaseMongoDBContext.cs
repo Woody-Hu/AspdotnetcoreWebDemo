@@ -1,4 +1,10 @@
-﻿using MongoDB.Driver;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// MongoDB操作框架 - 连接上下文底层
+// 创建标识：胡迪 2018.07.04
+//----------------------------------------------------------------*/
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;

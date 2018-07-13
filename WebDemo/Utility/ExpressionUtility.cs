@@ -1,16 +1,119 @@
-﻿using System;
+﻿/*----------------------------------------------------------------
+// Copyright (C) 2015 新鸿业科技有限公司
+// 版权所有。 
+// 万达构件库Web应用-公共方法与公共类- 表达式树工具
+// 创建标识：胡迪 2018.07.03
+//----------------------------------------------------------------*/
+using AutoEFContext;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace WebDemo.Utility
+namespace WanDaWeb.Utility
 {
     /// <summary>
     /// 表达式树工具
     /// </summary>
-    public class ExpressionUtility
+    public static class ExpressionUtility
     {
+        #region 私有字段
+        /// <summary>
+        /// 使用的线程安全类型Include表达式树字典
+        /// </summary>
+        private static readonly ConcurrentDictionary<Type, object> m_useIncludeDic = new ConcurrentDictionary<Type, object>();
+
+        /// <summary>
+        /// 使用的线程安全类型Load表达式树字典
+        /// </summary>
+        private static readonly ConcurrentDictionary<Type, object> m_useLoadDic = new ConcurrentDictionary<Type, object>();
+
+        /// <summary>
+        /// 使用的自动多层Include表达式树字典
+        /// </summary>
+        private static readonly ConcurrentDictionary<Type, object> m_useLinkIncludeDic = new ConcurrentDictionary<Type, object>();
+
+        /// <summary>
+        /// 使用的自动上下文特性
+        /// </summary>
+        private static readonly Type m_useAutoEntityType = typeof(AutoEntityAttribute);
+
+        /// <summary>
+        /// 使用的迭代类型
+        /// </summary>
+        private static readonly Type m_useIEnumableType = typeof(IEnumerable<>); 
+        #endregion
+
+        /// <summary>
+        /// 多层Include机制
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Func<IQueryable<T>, IQueryable<T>> GetLinkInclude<T>()
+             where T : class
+        {
+            Func<IQueryable<T>, IQueryable<T>> returnValue = null;
+
+            var tempType = typeof(T);
+
+            if (!m_useLinkIncludeDic.ContainsKey(tempType))
+            {
+                m_useLinkIncludeDic.GetOrAdd(tempType, GetLinkIncludeExpression<T>());
+            }
+
+            returnValue = m_useLinkIncludeDic[tempType] as Func<IQueryable<T>, IQueryable<T>>;
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取Load机制
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Func<T,DbContext,T> GetLoad<T>()
+            where T:class
+        {
+            Func<T, DbContext, T> returnValue = null;
+
+            var tempType = typeof(T);
+
+            if (!m_useLoadDic.ContainsKey(tempType))
+            {
+                m_useLoadDic.GetOrAdd(tempType, GetLoadExpression<T>());
+            }
+
+            returnValue = m_useLoadDic[tempType] as Func<T, DbContext, T>;
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// 获取Include机制
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Func<IQueryable<T>, IQueryable<T>> GetInclude<T>()
+            where T:class
+        {
+            Func<IQueryable<T>, IQueryable<T>> returnValue = null;
+
+            var tempType = typeof(T);
+
+            if (!m_useIncludeDic.ContainsKey(tempType))
+            {
+                m_useIncludeDic.GetOrAdd(tempType, GetIncludeExpression<T>());
+            }
+
+            returnValue = m_useIncludeDic[tempType] as Func<IQueryable<T>, IQueryable<T>>;
+
+            return returnValue;
+        }
 
         /// <summary>
         /// 利用输入类的属性与输入容器制作表达式树
@@ -57,6 +160,7 @@ namespace WebDemo.Utility
             return Expression.Lambda<Func<TClass, bool>>(returnExpression, useInputExpression);
         }
 
+        #region 私有方法
         /// <summary>
         /// 使用的默认比较器
         /// </summary>
@@ -66,5 +170,204 @@ namespace WebDemo.Utility
         {
             return (k1, k2) => k1.Equals(k2);
         }
+
+        /// <summary>
+        /// 获取Load表达式
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        private static Func<T, DbContext, T> GetLoadExpression<T>()
+            where T : class
+        {
+            var tempType = typeof(T);
+
+            List<string> useCollectionString = new List<string>();
+
+            List<string> useReferenceString = new List<string>();
+
+            foreach (var oneProperty in tempType.GetProperties())
+            {
+                if (oneProperty.PropertyType.IsGenericType && (
+                    m_useIEnumableType.MakeGenericType(oneProperty.PropertyType.GetGenericArguments()[0])).IsAssignableFrom(oneProperty.PropertyType))
+                {
+                    useCollectionString.Add(oneProperty.Name);
+                }
+                else if (null != oneProperty.PropertyType.GetCustomAttribute(m_useAutoEntityType))
+                {
+                    useReferenceString.Add(oneProperty.Name);
+                }
+            }
+
+            if (0 == useCollectionString.Count && 0 == useReferenceString.Count)
+            {
+                return null;
+            }
+            else
+            {
+                return (k, d) =>
+                {
+
+                    foreach (var oneString in useCollectionString)
+                    {
+                        d.Entry(k).Collection(oneString).LoadAsync().Wait();
+
+                    }
+
+                    foreach (var oneReferenceString in useReferenceString)
+                    {
+                        d.Entry(k).Reference(oneReferenceString).LoadAsync().Wait();
+                    }
+
+                    return k;
+                };
+            }
+        }
+
+        /// <summary>
+        /// 自动Include机制
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        private static Func<IQueryable<T>, IQueryable<T>> GetIncludeExpression<T>()
+            where T : class
+        {
+            var tempType = typeof(T);
+
+            List<string> usePropertyString = new List<string>();
+
+
+            foreach (var oneProperty in tempType.GetProperties())
+            {
+                if (IfPropertyNeedInclude(oneProperty))
+                {
+                    usePropertyString.Add(oneProperty.Name);
+                }
+            }
+
+            if (0 != usePropertyString.Count)
+            {
+                return k =>
+                {
+                    foreach (var oneString in usePropertyString)
+                    {
+                        k.Include(oneString);
+                    }
+
+                    return k;
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 判断属性是否需要Include
+        /// </summary>
+        /// <param name="oneProperty"></param>
+        /// <returns></returns>
+        private static bool IfPropertyNeedInclude(PropertyInfo oneProperty)
+        {
+            return IfTypeIsEnumerableType(oneProperty)
+                                || null != oneProperty.PropertyType.GetCustomAttribute(m_useAutoEntityType);
+        }
+
+        /// <summary>
+        /// 判断属性是否是可迭代类型的
+        /// </summary>
+        /// <param name="oneProperty"></param>
+        /// <returns></returns>
+        private static bool IfTypeIsEnumerableType(PropertyInfo oneProperty)
+        {
+            return (oneProperty.PropertyType.IsGenericType && (
+                                            m_useIEnumableType.MakeGenericType(oneProperty.PropertyType.GetGenericArguments()[0])).IsAssignableFrom(oneProperty.PropertyType));
+        }
+
+        /// <summary>
+        /// 获得多层Include表达式树
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        private static Func<IQueryable<T>, IQueryable<T>> GetLinkIncludeExpression<T>()
+             where T : class
+        {
+            HashSet<string> useStrings = new HashSet<string>();
+            HashSet<PropertyInfo> visitedProperty = new HashSet<PropertyInfo>();
+
+            //获取全部Include表达
+            GetLinkIncludeExpression(ref useStrings, ref visitedProperty, string.Empty, typeof(T));
+
+            if (0 == useStrings.Count)
+            {
+                return null;
+            }
+            else
+            {
+                return k =>
+                {
+                    foreach (var oneString in useStrings)
+                    {
+                        k = k.Include(oneString);
+                    }
+
+                    return k;
+                };
+            }
+        }
+
+        /// <summary>
+        /// 获得向下递归Include表达式字符串
+        /// </summary>
+        /// <param name="useStrings"></param>
+        /// <param name="visitedProperty"></param>
+        /// <param name="inputString"></param>
+        /// <param name="inputType"></param>
+        private static void GetLinkIncludeExpression
+            (ref HashSet<string> useStrings, ref HashSet<PropertyInfo> visitedProperty, string inputString, Type inputType)
+        {
+            List<PropertyInfo> lstUsedPropertyInfo = new List<PropertyInfo>();
+
+            //获取需要向下访问的属性
+            foreach (var oneProperty in inputType.GetProperties())
+            {
+                if (IfPropertyNeedInclude(oneProperty) && !visitedProperty.Contains(oneProperty))
+                {
+                    lstUsedPropertyInfo.Add(oneProperty);
+                }
+            }
+
+            if (0 == lstUsedPropertyInfo.Count)
+            {
+                if (!string.IsNullOrWhiteSpace(inputString))
+                {
+                    useStrings.Add(inputString);
+                }
+            }
+            else
+            {
+                foreach (var oneProperty in lstUsedPropertyInfo)
+                {
+                    //生成向下字符串
+                    string tempString = string.IsNullOrWhiteSpace(inputString) ? oneProperty.Name : inputString + "." + oneProperty.Name;
+
+                    //添加到访问列表
+                    visitedProperty.Add(oneProperty);
+
+                    Type useNextType = oneProperty.PropertyType;
+
+                    if (IfTypeIsEnumerableType(oneProperty))
+                    {
+                        useNextType = oneProperty.PropertyType.GetGenericArguments()[0];
+                    }
+
+                    //向下递归
+                    GetLinkIncludeExpression(ref useStrings, ref visitedProperty, tempString, useNextType);
+                }
+            }
+
+
+        } 
+        #endregion
     }
 }
