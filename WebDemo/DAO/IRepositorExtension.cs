@@ -117,6 +117,29 @@ namespace WanDaWeb.DAO
         PagePacker<Y> GetPage<Y>(Func<IQueryable<X>, IQueryable<Y>> useTransformer,
             int usePage, int pageSize, Expression<Func<Y, bool>> useWhere = null, IncludeDel<Y> useInclude = null) where Y : class;
 
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="usePage">查询的页数</param>
+        /// <param name="pageSize">每页的容量</param>
+        /// <param name="useWhere">使用的过滤条件</param>
+        /// <param name="useInclude">使用的Include委托</param>
+        /// <returns></returns>
+        PagePackerBoostrap<X> GetPageBootstrap(int usePage, int pageSize, Expression<Func<X, bool>> useWhere = null, IncludeDel<X> useInclude = null);
+
+        /// <summary>
+        /// 附带转换机制的分页查询
+        /// </summary>
+        /// <typeparam name="Y">转换后的类型</typeparam>
+        /// <param name="useTransformer">使用的转换机制（如group操作）</param>
+        /// <param name="usePage">查询的页数</param>
+        /// <param name="pageSize">每页的容量</param>
+        /// <param name="useWhere">使用的过滤条件</param>
+        /// <param name="useInclude">使用的Include委托</param>
+        /// <returns></returns>
+        PagePackerBoostrap<Y> GetPageBootstrap<Y>(Func<IQueryable<X>, IQueryable<Y>> useTransformer,
+            int usePage, int pageSize, Expression<Func<Y, bool>> useWhere = null, IncludeDel<Y> useInclude = null) where Y : class;
+
 
     }
 }

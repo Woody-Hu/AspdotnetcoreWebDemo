@@ -158,6 +158,36 @@ namespace AutoEFContextRepository
         }
 
         /// <summary>
+        /// 分页查询 用于boostrap
+        /// </summary>
+        /// <param name="usePage">查询的页数</param>
+        /// <param name="pageSize">每页的容量</param>
+        /// <param name="useWhere">使用的过滤条件</param>
+        /// <param name="useInclude">使用的Include委托</param>
+        public PagePackerBoostrap<X> GetPageBootstrap(int usePage, int pageSize, Expression<Func<X, bool>> useWhere = null, IncludeDel<X> useInclude = null)
+        {
+            var tempPage = GetPage(m_useDB, usePage, pageSize, useWhere, useInclude);
+
+            return new PagePackerBoostrap<X>() { Total = tempPage.TotalCount, Rows = tempPage.Values };
+        }
+
+        /// <summary>
+        /// 附带转换机制的分页查询 用于boostrap
+        /// </summary>
+        /// <typeparam name="Y">转换后的类型</typeparam>
+        /// <param name="useTransformer">使用的转换机制（如group操作）</param>
+        /// <param name="usePage">查询的页数</param>
+        /// <param name="pageSize">每页的容量</param>
+        /// <param name="useWhere">使用的过滤条件</param>
+        /// <param name="useInclude">使用的Include委托</param>
+        public PagePackerBoostrap<Y> GetPageBootstrap<Y>(Func<IQueryable<X>, IQueryable<Y>> useTransformer, int usePage, int pageSize, Expression<Func<Y, bool>> useWhere = null, IncludeDel<Y> useInclude = null) where Y : class
+        {
+            var tempPage = GetPage(useTransformer(m_useDB), usePage, pageSize, useWhere, useInclude);
+
+            return new PagePackerBoostrap<Y>() { Total = tempPage.TotalCount, Rows = tempPage.Values };
+        }
+
+        /// <summary>
         /// 更新一个
         /// </summary>
         /// <param name="input"></param>
