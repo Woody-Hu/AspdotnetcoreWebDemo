@@ -47,8 +47,12 @@ namespace WebDemo.Utility
                         ifProcessed = true;
                         inputContext.Proceed();
 
-                        //保存缓存
-                        CacheUtility.SetCache(tempKey, inputContext.ReturnValue);
+                        if (null != inputContext.ReturnValue)
+                        {
+                            //保存缓存
+                            CacheUtility.SetCache(tempKey, inputContext.ReturnValue);
+                        }
+  
                     }
                     else
                     {
