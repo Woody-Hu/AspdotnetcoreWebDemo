@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Autofac.Extensions.DependencyInjection;
 using NLog.Web;
 
-namespace WanDaWeb
+namespace WebDemo
 {
     public class Program
     {

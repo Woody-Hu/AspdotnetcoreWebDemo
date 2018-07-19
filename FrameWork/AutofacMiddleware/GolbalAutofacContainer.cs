@@ -1,10 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// Autofac中间件机制框架 - 全局Autofac容器
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
-using Autofac;
+﻿using Autofac;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;

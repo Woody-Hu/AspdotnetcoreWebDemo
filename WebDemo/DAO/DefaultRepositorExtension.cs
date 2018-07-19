@@ -1,9 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// 万达构件库Web应用- DAO层 - 扩展数据操作接口实现
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
+﻿
 using AutoEFContext;
 using AutoEFContextRepository;
 using AutofacMiddleware;
@@ -14,7 +9,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace WanDaWeb.DAO
+namespace WebDemo.DAO
 {
     /// <summary>
     /// 扩展数据操作接口实现
@@ -30,7 +25,7 @@ namespace WanDaWeb.DAO
         /// <summary>
         /// 使用的存储层接口
         /// </summary>
-        private readonly IRepository<T, X> m_coreRepository = null;
+        private readonly IRespository<T, X> m_coreRepository = null;
 
         #endregion
 
@@ -38,7 +33,7 @@ namespace WanDaWeb.DAO
         /// 构造函数
         /// </summary>
         /// <param name="inputRepository"></param>
-        public DefaultRepositorExtension(IRepository<T, X> inputRepository)
+        public DefaultRepositorExtension(IRespository<T, X> inputRepository)
         {
             m_coreRepository = inputRepository;
         }
@@ -158,32 +153,6 @@ namespace WanDaWeb.DAO
             return m_coreRepository.GetPage(useTransformer, usePage, pageSize, useWhere, useInclude);
         }
 
-        /// <summary>
-        /// 分页查询 用于boostrap
-        /// </summary>
-        /// <param name="usePage">查询的页数</param>
-        /// <param name="pageSize">每页的容量</param>
-        /// <param name="useWhere">使用的过滤条件</param>
-        /// <param name="useInclude">使用的Include委托</param>
-        public PagePackerBoostrap<X> GetPageBootstrap(int usePage, int pageSize, Expression<Func<X, bool>> useWhere = null, IncludeDel<X> useInclude = null)
-        {
-            return m_coreRepository.GetPageBootstrap(usePage, pageSize, useWhere, useInclude);
-        }
-
-        /// <summary>
-        /// 附带转换机制的分页查询 用于boostrap
-        /// </summary>
-        /// <typeparam name="Y">转换后的类型</typeparam>
-        /// <param name="useTransformer">使用的转换机制（如group操作）</param>
-        /// <param name="usePage">查询的页数</param>
-        /// <param name="pageSize">每页的容量</param>
-        /// <param name="useWhere">使用的过滤条件</param>
-        /// <param name="useInclude">使用的Include委托</param>
-        public PagePackerBoostrap<Y> GetPageBootstrap<Y>(Func<IQueryable<X>, IQueryable<Y>> useTransformer, int usePage, int pageSize, Expression<Func<Y, bool>> useWhere = null, IncludeDel<Y> useInclude = null) where Y : class
-        {
-            return m_coreRepository.GetPageBootstrap(useTransformer, usePage, pageSize, useWhere, useInclude);
-        }
-
 
         /// <summary>
         /// 更新一个
@@ -195,5 +164,6 @@ namespace WanDaWeb.DAO
         }
 
 
+       
     }
 }

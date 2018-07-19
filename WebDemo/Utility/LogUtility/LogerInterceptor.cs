@@ -1,9 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// 万达构件库Web应用-公共方法与公共类- 方法日志拦截器
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
+﻿
 using AutofacMiddleware;
 using NLog;
 using System;
@@ -11,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WanDaWeb.Utility
+namespace WebDemo.Utility
 {
     /// <summary>
     /// 方法日志拦截器

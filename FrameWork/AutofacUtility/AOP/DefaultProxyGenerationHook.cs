@@ -1,10 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// Autofac扫描注入框架 - AOP机制 - 使用的代理判断钩子
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
-using AutofacMiddleware;
+﻿using AutofacMiddleware;
 using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;

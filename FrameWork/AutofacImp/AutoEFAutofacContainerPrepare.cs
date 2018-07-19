@@ -1,10 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// 自动化上下框架Autofac扫描框架对接框架 - 自动扫描框架Autofac配置器(以AutoContext为注册基类)
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
-using AutoEFContext;
+﻿using AutoEFContext;
 using Autofac;
 using AutofacMiddleware;
 using System;

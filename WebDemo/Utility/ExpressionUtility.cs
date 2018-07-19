@@ -1,9 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// 万达构件库Web应用-公共方法与公共类- 表达式树工具
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
+﻿
 using AutoEFContext;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,9 +9,8 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using WebDemo.Utility;
 
-namespace WanDaWeb.Utility
+namespace WebDemo.Utility
 {
     /// <summary>
     /// 表达式树工具
@@ -47,12 +41,7 @@ namespace WanDaWeb.Utility
         /// <summary>
         /// 使用的迭代类型
         /// </summary>
-        private static readonly Type m_useIEnumableType = typeof(IEnumerable<>);
-
-        /// <summary>
-        /// 非include属性使用的特性
-        /// </summary>
-        private static Type m_attributeType = typeof(NotIncludeAttribute);
+        private static readonly Type m_useIEnumableType = typeof(IEnumerable<>); 
         #endregion
 
         /// <summary>
@@ -275,12 +264,6 @@ namespace WanDaWeb.Utility
         /// <returns></returns>
         private static bool IfPropertyNeedInclude(PropertyInfo oneProperty)
         {
-            var tempAttribute = oneProperty.GetCustomAttribute(m_attributeType, false);
-
-            if (null != tempAttribute)
-            {
-                return false;
-            }
             return IfTypeIsEnumerableType(oneProperty)
                                 || null != oneProperty.PropertyType.GetCustomAttribute(m_useAutoEntityType);
         }

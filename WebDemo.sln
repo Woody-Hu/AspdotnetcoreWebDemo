@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDBUtility", "FrameWork
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDBAutofacMiddlewareImp", "FrameWork\MongoDBAutofacMiddlewareImp\MongoDBAutofacMiddlewareImp.csproj", "{9FE17B37-9A9B-4DD7-94D7-730786C8AFD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebDemo", "WebDemo\WebDemo.csproj", "{91E82E66-2A91-48EC-9D5D-BC5949E6563B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebDemo", "WebDemo\WebDemo.csproj", "{E4D506B9-7EFD-434F-BDB8-47C8E4190540}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +67,10 @@ Global
 		{9FE17B37-9A9B-4DD7-94D7-730786C8AFD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FE17B37-9A9B-4DD7-94D7-730786C8AFD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FE17B37-9A9B-4DD7-94D7-730786C8AFD9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91E82E66-2A91-48EC-9D5D-BC5949E6563B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91E82E66-2A91-48EC-9D5D-BC5949E6563B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91E82E66-2A91-48EC-9D5D-BC5949E6563B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91E82E66-2A91-48EC-9D5D-BC5949E6563B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4D506B9-7EFD-434F-BDB8-47C8E4190540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D506B9-7EFD-434F-BDB8-47C8E4190540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D506B9-7EFD-434F-BDB8-47C8E4190540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D506B9-7EFD-434F-BDB8-47C8E4190540}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

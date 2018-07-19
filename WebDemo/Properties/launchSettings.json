@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WanDaWeb": {
+    "WebDemo": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "ComponentBrowse.html",

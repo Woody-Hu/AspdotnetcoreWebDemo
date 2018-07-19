@@ -1,10 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// Autofac扫描注入框架 - AOP机制 - 拦截器基础类
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using AutofacMiddleware;

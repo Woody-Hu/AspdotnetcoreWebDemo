@@ -1,9 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// 万达Web - 启动配置
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
+﻿
 using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
@@ -23,7 +18,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
 using System;
 
-namespace WanDaWeb
+namespace WebDemo
 {
     public class Startup
     {

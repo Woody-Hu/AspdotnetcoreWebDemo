@@ -1,9 +1,4 @@
-﻿/*----------------------------------------------------------------
-// Copyright (C) 2015 新鸿业科技有限公司
-// 版权所有。 
-// 万达构件库Web应用- DAO层 - Sqlite数据库上下文
-// 创建标识：胡迪 2018.07.03
-//----------------------------------------------------------------*/
+﻿
 using AutoEFContext;
 using AutofacEFImp;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WanDaWeb.Config;
-using WanDaWeb.Utility;
+using WebDemo.Config;
+using WebDemo.Utility;
 
-namespace WanDaWeb.DAO
+namespace WebDemo.DAO
 {
     [AutoContext]
     /// <summary>
