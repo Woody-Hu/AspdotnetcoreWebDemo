@@ -41,7 +41,7 @@ namespace WebDemo.Utility
                     var tempCache = CacheUtility.GetCache(tempKey);
 
                     //若没有缓存
-                    if (null == tempCache || tempCache.GetType() != tempMethod.ReturnType)
+                    if (null == tempCache || tempCache.Value.GetType() != tempMethod.ReturnType)
                     {
                         //设置执行状态
                         ifProcessed = true;
