@@ -37,6 +37,7 @@ namespace AutofacImp
             using (var tempContext = Activator.CreateInstance(tempType) as AutoContext)
             {
                 tempContext.InitDB();
+                tempContext.SaveChanges();
             }
 
             //注册为请求实例

@@ -8,7 +8,7 @@ namespace AutoEFContext
     /// <summary>
     /// 自动上下文基类
     /// </summary>
-    public abstract class AutoContext:DbContext
+    public abstract class AutoContext : DbContext
     {
         #region 重写方法组
         /// <summary>
@@ -50,7 +50,7 @@ namespace AutoEFContext
             }
 
 
-        } 
+        }
         #endregion
 
         #region 私有字段
@@ -67,7 +67,12 @@ namespace AutoEFContext
         /// <summary>
         /// 使用的返回值类型泛型基础类
         /// </summary>
-        private static Type m_useBaseReturnType = typeof(DbSet<>); 
+        private static Type m_useBaseReturnType = typeof(DbSet<>);
+
+        /// <summary>
+        /// 数据初始化方法
+        /// </summary>
+        private const string m_seedMethod = "SeedDB";
         #endregion
 
         /// <summary>
@@ -135,6 +140,33 @@ namespace AutoEFContext
         public void InitDB()
         {
             this.Database.EnsureCreated();
+            SeedDB();
+        }
+
+        /// <summary>
+        /// 创建初始数据
+        /// </summary>
+        private void SeedDB()
+        {
+            //扫描所有属性
+            foreach (var oneProperty in this.GetType().GetProperties())
+            {
+                //扫描静态方法
+                if (oneProperty.PropertyType.IsGenericType && oneProperty.PropertyType.GetGenericTypeDefinition() == m_useBaseReturnType)
+                {
+                    var tempMethod = oneProperty.PropertyType.GetMethod(m_seedMethod, BindingFlags.Static | BindingFlags.Public);
+
+                    if (null == tempMethod || tempMethod.GetParameters().Length != 1 ||
+                        typeof(AutoContext) != tempMethod.GetParameters()[0].ParameterType)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        tempMethod.Invoke(null, new object[] { this });
+                    }
+                }
+            }
         }
 
 
@@ -150,7 +182,7 @@ namespace AutoEFContext
             m_useSetExpression = ExpressionUtility.GetSetActionDic(useType);
 
             m_useGetExpression = ExpressionUtility.GetGetFuncDic(useType);
-        } 
+        }
         #endregion
     }
 }
