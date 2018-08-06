@@ -154,7 +154,7 @@ namespace AutoEFContext
                 //扫描静态方法
                 if (oneProperty.PropertyType.IsGenericType && oneProperty.PropertyType.GetGenericTypeDefinition() == m_useBaseReturnType)
                 {
-                    var tempMethod = oneProperty.PropertyType.GetMethod(m_seedMethod, BindingFlags.Static | BindingFlags.Public);
+                    var tempMethod = oneProperty.PropertyType.GetGenericArguments()[0].GetMethod(m_seedMethod, BindingFlags.Static | BindingFlags.Public);
 
                     if (null == tempMethod || tempMethod.GetParameters().Length != 1 ||
                         typeof(AutoContext) != tempMethod.GetParameters()[0].ParameterType)
