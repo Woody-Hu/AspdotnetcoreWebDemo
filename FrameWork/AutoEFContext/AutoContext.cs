@@ -8,7 +8,7 @@ namespace AutoEFContext
     /// <summary>
     /// 自动上下文基类
     /// </summary>
-    public abstract class AutoContext : DbContext
+    public abstract class AutoContext:DbContext
     {
         #region 重写方法组
         /// <summary>
@@ -50,7 +50,7 @@ namespace AutoEFContext
             }
 
 
-        }
+        } 
         #endregion
 
         #region 私有字段
@@ -156,8 +156,8 @@ namespace AutoEFContext
                 {
                     var tempMethod = oneProperty.PropertyType.GetGenericArguments()[0].GetMethod(m_seedMethod, BindingFlags.Static | BindingFlags.Public);
 
-                    if (null == tempMethod || tempMethod.GetParameters().Length != 1 ||
-                        typeof(AutoContext) != tempMethod.GetParameters()[0].ParameterType)
+                    if (null == tempMethod || tempMethod.GetParameters().Length != 1 || 
+                        typeof(AutoContext) != tempMethod.GetParameters()[0].ParameterType )
                     {
                         continue;
                     }
@@ -182,7 +182,7 @@ namespace AutoEFContext
             m_useSetExpression = ExpressionUtility.GetSetActionDic(useType);
 
             m_useGetExpression = ExpressionUtility.GetGetFuncDic(useType);
-        }
+        } 
         #endregion
     }
 }

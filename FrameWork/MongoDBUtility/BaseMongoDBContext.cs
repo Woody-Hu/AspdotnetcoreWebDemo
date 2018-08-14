@@ -36,9 +36,17 @@ namespace MongoDBUtility
         {
             //设置连接字符串
             Prepare(ref m_thisConectionString);
+            //设置连接设置
+            var tempClientSetting = MongoClientSettings.FromConnectionString(m_thisConectionString);
+
+            tempClientSetting.ConnectTimeout = new TimeSpan(30000);
+            tempClientSetting.MaxConnectionLifeTime = new TimeSpan(30000);
+            tempClientSetting.MinConnectionPoolSize = 8;
+            tempClientSetting.MaxConnectionPoolSize = 256;
+
 
             //创建MongoClient
-            UseClient = new MongoClient(m_thisConectionString);
+            UseClient = new MongoClient(tempClientSetting);
 
             //获取库名
             m_thisDataSetName = AutoMongoDBContextAttribue.GetUseDataSetName(this.GetType());
