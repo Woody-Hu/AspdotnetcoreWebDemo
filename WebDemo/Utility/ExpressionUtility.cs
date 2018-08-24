@@ -1,5 +1,4 @@
-﻿
-using AutoEFContext;
+﻿using AutoEFContext;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Concurrent;
@@ -10,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebDemo.Utility
+namespace WanDaWeb.Utility
 {
     /// <summary>
     /// 表达式树工具
@@ -41,7 +40,12 @@ namespace WebDemo.Utility
         /// <summary>
         /// 使用的迭代类型
         /// </summary>
-        private static readonly Type m_useIEnumableType = typeof(IEnumerable<>); 
+        private static readonly Type m_useIEnumableType = typeof(IEnumerable<>);
+
+        /// <summary>
+        /// 非include属性使用的特性
+        /// </summary>
+        private static Type m_attributeType = typeof(NotIncludeAttribute);
         #endregion
 
         /// <summary>
@@ -120,7 +124,7 @@ namespace WebDemo.Utility
         /// <param name="inputComparer">使用的比较Func 第一个参数为从输入中取出的值，第二个参数为从容器中取出的值</param>
         /// <returns>使用的表达式树</returns>
         public static Expression<Func<TClass, bool>> GetEqulaOrExpression<TClass, TProperty>
-            (Func<TClass, TProperty> inputProperty, IEnumerable<TProperty> inputContainsSet, Func<TProperty, TProperty, bool> inputComparer = null)
+            (Expression<Func<TClass, TProperty>> inputProperty, IEnumerable<TProperty> inputContainsSet, Expression<Func<TProperty, TProperty, bool>> inputComparer = null)
         {
             if (null == inputComparer)
             {
@@ -130,11 +134,11 @@ namespace WebDemo.Utility
             //获取输入的参数
             ParameterExpression useInputExpression = Expression.Parameter(typeof(TClass));
 
-            var tempMethod = inputProperty.Method;
+            var tempMethod = inputProperty;
 
-            var tempComparerMethod = inputComparer.Method;
+            var tempComparerMethod = inputComparer;
 
-            var useValue = Expression.Call(tempMethod, useInputExpression);
+            var useValue = Expression.Invoke(tempMethod, useInputExpression); //Expression.Call(useInputExpression, tempMethod);
 
             List<ConstantExpression> lstUseConstrant = new List<ConstantExpression>();
 
@@ -148,7 +152,7 @@ namespace WebDemo.Utility
             //表达组合
             foreach (var oneExpression in lstUseConstrant)
             {
-                returnExpression = Expression.Or(returnExpression, Expression.Call(tempComparerMethod, useValue, oneExpression));
+                returnExpression = Expression.Or(returnExpression, Expression.Invoke(tempComparerMethod, useValue, oneExpression));
             }
 
 
@@ -161,7 +165,7 @@ namespace WebDemo.Utility
         /// </summary>
         /// <typeparam name="TProperty"></typeparam>
         /// <returns></returns>
-        private static Func<TProperty, TProperty, bool> GetDefaultFunc<TProperty>()
+        private static Expression<Func<TProperty, TProperty, bool>> GetDefaultFunc<TProperty>()
         {
             return (k1, k2) => k1.Equals(k2);
         }
@@ -245,7 +249,7 @@ namespace WebDemo.Utility
                 {
                     foreach (var oneString in usePropertyString)
                     {
-                        k.Include(oneString);
+                        k = k.Include(oneString);
                     }
 
                     return k;
@@ -264,9 +268,18 @@ namespace WebDemo.Utility
         /// <returns></returns>
         private static bool IfPropertyNeedInclude(PropertyInfo oneProperty)
         {
+            var tempAttribute = oneProperty.GetCustomAttribute(m_attributeType, false);
+
+            if (null != tempAttribute)
+            {
+                return false;
+            }
+
             return IfTypeIsEnumerableType(oneProperty)
                                 || null != oneProperty.PropertyType.GetCustomAttribute(m_useAutoEntityType);
         }
+
+       
 
         /// <summary>
         /// 判断属性是否是可迭代类型的
@@ -290,8 +303,11 @@ namespace WebDemo.Utility
             HashSet<string> useStrings = new HashSet<string>();
             HashSet<PropertyInfo> visitedProperty = new HashSet<PropertyInfo>();
 
+
+            Type useOriginType = null;
+
             //获取全部Include表达
-            GetLinkIncludeExpression(ref useStrings, ref visitedProperty, string.Empty, typeof(T));
+            GetLinkIncludeExpression(ref useStrings, ref visitedProperty, string.Empty, typeof(T),ref useOriginType);
 
             if (0 == useStrings.Count)
             {
@@ -311,6 +327,7 @@ namespace WebDemo.Utility
             }
         }
 
+
         /// <summary>
         /// 获得向下递归Include表达式字符串
         /// </summary>
@@ -319,9 +336,26 @@ namespace WebDemo.Utility
         /// <param name="inputString"></param>
         /// <param name="inputType"></param>
         private static void GetLinkIncludeExpression
-            (ref HashSet<string> useStrings, ref HashSet<PropertyInfo> visitedProperty, string inputString, Type inputType)
+            (ref HashSet<string> useStrings, ref HashSet<PropertyInfo> visitedProperty, string inputString, Type inputType,ref Type inputOriginType )
         {
+
             List<PropertyInfo> lstUsedPropertyInfo = new List<PropertyInfo>();
+
+            //相同跳出
+            if (inputType == inputOriginType)
+            {
+                if (!string.IsNullOrWhiteSpace(inputString))
+                {
+                    useStrings.Add(inputString);
+                }
+                return;
+            }
+
+            //引用赋值
+            if (null == inputOriginType)
+            {
+                inputOriginType = inputType;
+            }
 
             //获取需要向下访问的属性
             foreach (var oneProperty in inputType.GetProperties())
@@ -357,12 +391,12 @@ namespace WebDemo.Utility
                     }
 
                     //向下递归
-                    GetLinkIncludeExpression(ref useStrings, ref visitedProperty, tempString, useNextType);
+                    GetLinkIncludeExpression(ref useStrings, ref visitedProperty, tempString, useNextType,ref inputOriginType);
                 }
             }
 
 
-        } 
+        }
         #endregion
     }
 }
