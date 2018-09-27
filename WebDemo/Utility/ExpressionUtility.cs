@@ -41,11 +41,6 @@ namespace WanDaWeb.Utility
         /// 使用的迭代类型
         /// </summary>
         private static readonly Type m_useIEnumableType = typeof(IEnumerable<>);
-
-        /// <summary>
-        /// 非include属性使用的特性
-        /// </summary>
-        private static Type m_attributeType = typeof(NotIncludeAttribute);
         #endregion
 
         /// <summary>
@@ -268,12 +263,6 @@ namespace WanDaWeb.Utility
         /// <returns></returns>
         private static bool IfPropertyNeedInclude(PropertyInfo oneProperty)
         {
-            var tempAttribute = oneProperty.GetCustomAttribute(m_attributeType, false);
-
-            if (null != tempAttribute)
-            {
-                return false;
-            }
 
             return IfTypeIsEnumerableType(oneProperty)
                                 || null != oneProperty.PropertyType.GetCustomAttribute(m_useAutoEntityType);
